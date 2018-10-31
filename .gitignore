@@ -1,0 +1,127 @@
+# Based on https://github.com/github/gitignore/tree/master/Global
+
+################################################################################
+#
+# Ignore all dot-files and dot-folders, except .htaccess and .gitignore
+#
+################################################################################
+.*
+!/.gitignore
+!/.htaccess
+
+################################################################################
+#
+# JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion
+#
+################################################################################
+*.iml
+.idea/
+
+## File-based project format:
+*.ipr
+*.iws
+
+# Plugin-specific files:
+
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+################################################################################
+#
+# Windows OS
+#
+################################################################################
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+################################################################################
+#
+# MacOS
+#
+################################################################################
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+################################################################################
+#
+# Backup
+#
+################################################################################
+
+*.bak
+
+################################################################################
+#
+# Vagrant
+#
+################################################################################
+
+.vagrant/
+
+################################################################################
+#
+# TortoiseGit
+#
+################################################################################
+
+# Project-level settings
+/.tgitconfig
+
+################################################################################
+#
+# Composer
+#
+################################################################################
+
+composer.phar
+vendor/
+
+# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+#composer.lock

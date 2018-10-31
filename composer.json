@@ -1,0 +1,48 @@
+{
+    "name": "vdhicts/laravel-validation-rules",
+    "description": "Collection of validation rules for Laravel.",
+    "keywords": [
+        "vdhicts",
+        "validation",
+        "rules",
+        "laravel"
+    ],
+    "homepage": "https://github.com/vdhicts/laravel-validation-rules",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dick van der Heiden",
+            "email": "info@vdhicts.nl",
+            "homepage": "https://www.vdhicts.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^5.7"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.7",
+        "phpunit/phpunit": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vdhicts\\ValidationRules\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vdhicts\\ValidationRules\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vdhicts\\ValidationRules\\ValidationRulesServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,30 @@
+<?php
+
+namespace Vdhicts\ValidationRules\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+
+class HexColor implements Rule
+{
+    /**
+     * Determine if the validation rule passes.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value): bool
+    {
+        return preg_match('/^#?[a-fA-F0-9]{3,6}$/', $value) != false;
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message(): string
+    {
+        return __('validationRules.hex_color');
+    }
+}
