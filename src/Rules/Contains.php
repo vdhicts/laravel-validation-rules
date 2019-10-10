@@ -3,6 +3,7 @@
 namespace Vdhicts\ValidationRules\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Str;
 
 class Contains implements Rule
 {
@@ -34,7 +35,7 @@ class Contains implements Rule
             return false;
         }
 
-        return str_contains($value, $this->needle);
+        return Str::contains($value, $this->needle);
     }
 
     /**

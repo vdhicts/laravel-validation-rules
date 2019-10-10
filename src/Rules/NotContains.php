@@ -3,6 +3,7 @@
 namespace Vdhicts\ValidationRules\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Str;
 
 class NotContains implements Rule
 {
@@ -34,7 +35,7 @@ class NotContains implements Rule
             return true;
         }
 
-        return ! str_contains($value, $this->needle);
+        return ! Str::contains($value, $this->needle);
     }
 
     /**

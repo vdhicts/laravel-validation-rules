@@ -3,6 +3,7 @@
 namespace Vdhicts\ValidationRules\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Str;
 
 class NotStartsWith implements Rule
 {
@@ -34,7 +35,7 @@ class NotStartsWith implements Rule
             return true;
         }
 
-        return ! starts_with($value, $this->needle);
+        return ! Str::startsWith($value, $this->needle);
     }
 
     /**

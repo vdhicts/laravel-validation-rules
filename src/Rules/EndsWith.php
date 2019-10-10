@@ -3,6 +3,7 @@
 namespace Vdhicts\ValidationRules\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Str;
 
 class EndsWith implements Rule
 {
@@ -34,7 +35,7 @@ class EndsWith implements Rule
             return false;
         }
 
-        return ends_with($value, $this->needle);
+        return Str::endsWith($value, $this->needle);
     }
 
     /**
