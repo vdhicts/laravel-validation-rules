@@ -52,7 +52,8 @@ Validates if the value is a date before or equals the provided date (Carbon).
 
 ### DutchPhone
 
-Validates if the value is a valid dutch phone number. Both mobile or landlines are supported.
+Validates if the value is a valid dutch phone number. Both mobile or landlines are supported. See the `Phone` validation
+rule to validate a phone number which isn't limited to the Netherlands.
 
 ### DutchPostalCode
 
@@ -109,6 +110,10 @@ Validates if the value *NOT* starts with a certain phrase.
 ```php
 'field' => [new NotEndsWith($needle)],
 ```
+
+### Phone
+
+Validates if the value is a valid phone number.
 
 ### Price
 

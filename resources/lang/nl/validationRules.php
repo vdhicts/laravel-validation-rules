@@ -15,6 +15,7 @@ return [
     'not_contains'            => 'Het veld :attribute mag geen `%s` bevatten',
     'not_ends_with'           => 'Het veld :attribute mag niet eindigen met `%s`',
     'not_starts_with'         => 'Het veld :attribute mag niet beginnen `%s`',
+    'phone'                   => 'Het veld :attribute moet een geldig telefoonnummer bevatten',
     'price_custom_decimal'    => 'Het veld :attribute moet een geldig bedrag bevatten, zoals `10%s95`',
     'price'                   => 'Het veld :attribute moet een geldig bedrag bevatten, zoals `10,95` of `10.50`',
     'starts_with'             => 'Het veld :attribute moet beginnen met `%s`',
