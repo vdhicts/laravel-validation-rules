@@ -15,6 +15,7 @@ return [
     'not_contains'            => 'The :attribute must not contain `%s`',
     'not_ends_with'           => 'The :attribute must not end with `%s`',
     'not_starts_with'         => 'The :attribute must not start with `%s`',
+    'phone'                   => 'The :attribute must be a valid phone number',
     'price_custom_decimal'    => 'The :attribute must be a valid price like `10%s95`',
     'price'                   => 'The :attribute must be a valid price like `10,95` or `10.50`',
     'starts_with'             => 'The :attribute must start with `%s`',
