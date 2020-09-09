@@ -6,6 +6,13 @@ This package offers extra validation rules for Laravel.
 
 This package requires Laravel 5.7+.
 
+| Version | Compatible with |
+| --- | --- |
+| 1.4.0 | 8+ |
+| 1.2.0 | 7+ |
+| 1.1.0 | 6+ |
+| 1.0.1 | 5.7+ |
+
 ## Installation
 
 You can install the package via composer:
