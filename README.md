@@ -124,6 +124,10 @@ provided it accepts both `,` or `.` signs.
 'field' => [new Price(',')], // accepts only ,
 ```
 
+### Semver
+
+Validates if the value is a valid version according to the [Semver](https://semver.org/) standard.
+
 ### VatNumber
 
 Validates if the value is a valid formatted VAT number. 

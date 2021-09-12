@@ -7,7 +7,6 @@ return [
     'date_before_or_equal'    => 'The :attribute must be before or equal to `%s`',
     'dutch_phone'             => 'The :attribute must be a valid dutch phone number',
     'dutch_postal_code'       => 'The :attribute must be a valid dutch post code',
-    'ends_with'               => 'The :attribute must ends with `%s`',
     'hex_color'               => 'The :attribute must be a valid Hex color',
     'hostname'                => 'The :attribute must be a valid hostname',
     'iban'                    => 'The :attribute must be a valid IBAN',
@@ -18,6 +17,6 @@ return [
     'phone'                   => 'The :attribute must be a valid phone number',
     'price_custom_decimal'    => 'The :attribute must be a valid price like `10%s95`',
     'price'                   => 'The :attribute must be a valid price like `10,95` or `10.50`',
-    'starts_with'             => 'The :attribute must start with `%s`',
+    'semver'                  => 'The :attribute must be a valid version according to the semver standard',
     'vat_number'              => 'The :attribute must be a valid VAT number',
 ];
