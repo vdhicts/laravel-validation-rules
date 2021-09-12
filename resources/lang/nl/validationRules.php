@@ -10,6 +10,7 @@ return [
     'hex_color'               => 'Het veld :attribute moet een geldige Hex kleur bevatten',
     'hostname'                => 'Het veld :attribute moet een geldige hostname bevatten',
     'iban'                    => 'Het veld :attribute moet een geldige IBAN bevatten',
+    'interval'                => 'Het veld :attribute moet een interval zijn',
     'maximum_hour_difference' => 'De start en eind datum moeten meer dan %s uur verschil',
     'mime_type'               => 'Het beld :attribute moet een geldig MIME-type zijn',
     'not_contains'            => 'Het veld :attribute mag geen `%s` bevatten',

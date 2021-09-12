@@ -10,6 +10,7 @@ return [
     'hex_color'               => 'The :attribute must be a valid Hex color',
     'hostname'                => 'The :attribute must be a valid hostname',
     'iban'                    => 'The :attribute must be a valid IBAN',
+    'interval'                => 'The :attribute must be an interval',
     'maximum_hour_difference' => 'The start and end date differ more then %s hours',
     'mime_type'               => 'The :attribute must be a valid MIME',
     'not_contains'            => 'The :attribute must not contain `%s`',

@@ -11,6 +11,7 @@ class Semver implements Rule
      *
      * @param string $attribute
      * @param mixed $value
+     * @return bool
      * @see https://regex101.com/r/vkijKf/1/
      * @see https://semver.org/
      */
@@ -25,6 +26,8 @@ class Semver implements Rule
 
     /**
      * Get the validation error message.
+     *
+     * @return string
      */
     public function message(): string
     {

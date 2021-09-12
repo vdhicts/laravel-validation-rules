@@ -78,6 +78,10 @@ Validates if the value contains a valid hostname, like `example.com`.
 
 Validates if the value contains a valid [IBAN](https://en.wikipedia.org/wiki/International_Bank_Account_Number).
 
+### Interval
+
+Validates if the value is an interval, i.e. `PT30S`.
+
 ### MaximumHourDifference
 
 Validates if the value is differing less then the provided amount of hours.

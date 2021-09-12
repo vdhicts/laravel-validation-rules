@@ -2,9 +2,11 @@
 
 namespace Vdhicts\ValidationRules\Rules;
 
+use DateInterval;
+use Exception;
 use Illuminate\Contracts\Validation\Rule;
 
-final class MimeType implements Rule
+final class Interval implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -15,11 +17,17 @@ final class MimeType implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        if (!is_string($value)) {
+        // Empty string means 0 interval
+        if ($value === '') {
+            $value = 'P0Y';
+        }
+        try {
+            new DateInterval($value);
+
+            return true;
+        } catch (Exception $e) {
             return false;
         }
-
-        return preg_match('/^\w+\/[-+.\w]+$/', $value) === 1;
     }
 
     /**
@@ -29,6 +37,6 @@ final class MimeType implements Rule
      */
     public function message(): string
     {
-        return trans('validationRules.mime_type');
+        return trans('validationRules.interval');
     }
 }
