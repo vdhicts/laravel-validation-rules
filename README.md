@@ -4,7 +4,7 @@ This package offers extra validation rules for Laravel.
 
 ## Requirements
 
-This package requires Laravel 5.7+.
+This package requires Laravel 5.7+ and PHP 7.4+.
 
 | Version | Compatible with |
 | --- | --- |
@@ -66,14 +66,6 @@ rule to validate a phone number which isn't limited to the Netherlands.
 
 Validates if the value is a valid dutch zip code, like `1234AB`.
 
-### EndsWith
-
-Validates if the value ends with a certain phrase.
-
-```php
-'field' => [new EndsWith($needle)],
-```
-
 ### HexColor
 
 Validates if the value contains a hex color, like `#000000`.
@@ -132,14 +124,6 @@ provided it accepts both `,` or `.` signs.
 'field' => [new Price(',')], // accepts only ,
 ```
 
-### StartsWith
-
-Validates if the value starts with a certain phrase.
-
-```php
-'field' => [new StartsWith($needle)],
-```
-
 ### VatNumber
 
 Validates if the value is a valid formatted VAT number. 
@@ -154,8 +138,8 @@ request per feature. In exchange you will be credited as contributor on this pag
 
 ## Security
 
-If you discover any security related issues in this or other packages of Vdhicts, please email info@vdhicts.nl instead
-of using the issue tracker.
+If you discover any security related issues in this or other packages of Vdhicts, please email security@vdhicts.nl 
+instead of using the issue tracker.
 
 ## License
 
@@ -163,5 +147,5 @@ This package is open-sourced software licensed under the [MIT license](http://op
 
 ## About vdhicts
 
-Van der Heiden ICT services is the name of my personal company for which I work as freelancer. Van der Heiden ICT 
-services develops and implements IT solutions for businesses and educational institutions.
+[Vdhicts](https://www.vdhicts.nl) is the name of my personal company. Vdhicts develops and implements IT solutions for
+businesses and educational institutions.

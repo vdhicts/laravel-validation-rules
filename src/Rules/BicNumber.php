@@ -9,11 +9,11 @@ class BicNumber implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string $attribute
-     * @param  mixed $value
+     * @param string $attribute
+     * @param mixed $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
         return preg_match('/^([a-zA-Z]){4}([a-zA-Z]){2}([0-9a-zA-Z]){2}([0-9a-zA-Z]{3})?$/', $value) != false;
     }
@@ -23,7 +23,7 @@ class BicNumber implements Rule
      *
      * @return string
      */
-    public function message()
+    public function message(): string
     {
         return __('validationRules.bic_number');
     }

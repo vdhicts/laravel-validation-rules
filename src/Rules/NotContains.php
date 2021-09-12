@@ -7,16 +7,8 @@ use Illuminate\Support\Str;
 
 class NotContains implements Rule
 {
-    /**
-     * @var string
-     */
-    private $needle;
+    private string $needle;
 
-    /**
-     * NotContains constructor.
-     *
-     * @param string $needle
-     */
     public function __construct(string $needle = '')
     {
         $this->needle = $needle;
@@ -25,8 +17,8 @@ class NotContains implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed $value
      * @return bool
      */
     public function passes($attribute, $value): bool

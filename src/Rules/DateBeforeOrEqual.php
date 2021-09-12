@@ -2,24 +2,14 @@
 
 namespace Vdhicts\ValidationRules\Rules;
 
-use Carbon\Carbon;
+use DateTimeInterface;
 use Illuminate\Contracts\Validation\Rule;
 
 class DateBeforeOrEqual implements Rule
 {
-    /**
-     * Holds the needle.
-     *
-     * @var string
-     */
-    private $date;
+    private DateTimeInterface $date;
 
-    /**
-     * DateAfterOrEqual constructor.
-     *
-     * @param Carbon $date
-     */
-    public function __construct(Carbon $date)
+    public function __construct(DateTimeInterface $date)
     {
         $this->date = $date;
     }
@@ -27,8 +17,8 @@ class DateBeforeOrEqual implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed $value
      * @return bool
      */
     public function passes($attribute, $value): bool
@@ -38,7 +28,7 @@ class DateBeforeOrEqual implements Rule
             ->getTimestamp();
 
         $providedTimestamp = strtotime($value);
-        if (! $providedTimestamp) {
+        if (!$providedTimestamp) {
             return false;
         }
 

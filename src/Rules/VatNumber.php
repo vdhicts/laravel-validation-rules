@@ -50,7 +50,7 @@ class VatNumber implements Rule
      * @param  mixed $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
         $vatNumber = strtoupper($value);
 
@@ -68,7 +68,7 @@ class VatNumber implements Rule
      *
      * @return string
      */
-    public function message()
+    public function message(): string
     {
         return __('validationRules.vat_number');
     }
