@@ -124,6 +124,10 @@ provided it accepts both `,` or `.` signs.
 'field' => [new Price(',')], // accepts only ,
 ```
 
+### Secure url
+
+Validates if the value is a valid secure url, i.e. is a HTTPS url.
+
 ### Semver
 
 Validates if the value is a valid version according to the [Semver](https://semver.org/) standard.

@@ -17,6 +17,7 @@ return [
     'phone'                   => 'Het veld :attribute moet een geldig telefoonnummer bevatten',
     'price_custom_decimal'    => 'Het veld :attribute moet een geldig bedrag bevatten, zoals `10%s95`',
     'price'                   => 'Het veld :attribute moet een geldig bedrag bevatten, zoals `10,95` of `10.50`',
+    'secure_url'              => 'Het veld :attribute moet een HTTPS url zijn',
     'semver'                  => 'Het beld :attribute moet een geldige versie zijn volgens de semver standaard',
     'vat_number'              => 'Het veld :attribute moet een geldig BTW nummer bevatten',
 ];

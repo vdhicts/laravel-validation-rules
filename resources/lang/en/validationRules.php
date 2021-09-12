@@ -18,5 +18,6 @@ return [
     'price_custom_decimal'    => 'The :attribute must be a valid price like `10%s95`',
     'price'                   => 'The :attribute must be a valid price like `10,95` or `10.50`',
     'semver'                  => 'The :attribute must be a valid version according to the semver standard',
+    'secure_url'              => 'The :attribute must be a HTTPS url',
     'vat_number'              => 'The :attribute must be a valid VAT number',
 ];
