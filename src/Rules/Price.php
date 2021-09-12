@@ -8,16 +8,9 @@ class Price implements Rule
 {
     /**
      * Holds the required decimal notation. Null to not limit to a specific decimal sign.
-     *
-     * @var string|null
      */
-    private $decimalSign = null;
+    private ?string $decimalSign;
 
-    /**
-     * Price constructor.
-     *
-     * @param string|null $decimalSign
-     */
     public function __construct(string $decimalSign = null)
     {
         $this->decimalSign = $decimalSign;
@@ -26,13 +19,13 @@ class Price implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed $value
      * @return bool
      */
     public function passes($attribute, $value): bool
     {
-        $requiresDecimals = ! is_null($this->decimalSign);
+        $requiresDecimals = !is_null($this->decimalSign);
         if (is_null($this->decimalSign)) {
             $decimalSign = '(,|\.)?';
         } else {

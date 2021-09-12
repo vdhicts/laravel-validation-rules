@@ -5,18 +5,13 @@ namespace Vdhicts\ValidationRules\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Str;
 
+/**
+ * @deprecated use the builtin `ends_with`
+ */
 class EndsWith implements Rule
 {
-    /**
-     * @var string
-     */
-    private $needle;
+    private string $needle;
 
-    /**
-     * EndsWith constructor.
-     *
-     * @param string $needle
-     */
     public function __construct(string $needle = '')
     {
         $this->needle = $needle;
@@ -25,8 +20,8 @@ class EndsWith implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed $value
      * @return bool
      */
     public function passes($attribute, $value): bool

@@ -4,7 +4,7 @@ This package offers extra validation rules for Laravel.
 
 ## Requirements
 
-This package requires Laravel 5.7+.
+This package requires Laravel 5.7+ and PHP 7.4+.
 
 | Version | Compatible with |
 | --- | --- |
@@ -66,14 +66,6 @@ rule to validate a phone number which isn't limited to the Netherlands.
 
 Validates if the value is a valid dutch zip code, like `1234AB`.
 
-### EndsWith
-
-Validates if the value ends with a certain phrase.
-
-```php
-'field' => [new EndsWith($needle)],
-```
-
 ### HexColor
 
 Validates if the value contains a hex color, like `#000000`.
@@ -86,6 +78,10 @@ Validates if the value contains a valid hostname, like `example.com`.
 
 Validates if the value contains a valid [IBAN](https://en.wikipedia.org/wiki/International_Bank_Account_Number).
 
+### Interval
+
+Validates if the value is an interval, i.e. `PT30S`.
+
 ### MaximumHourDifference
 
 Validates if the value is differing less then the provided amount of hours.
@@ -93,6 +89,10 @@ Validates if the value is differing less then the provided amount of hours.
 ```php
 'field' => [new MaximumHourDifference($start, 10)];
 ```
+
+### Mime Type
+
+Validates if the value is valid MIME.
 
 ### NotContains
 
@@ -118,9 +118,17 @@ Validates if the value *NOT* starts with a certain phrase.
 'field' => [new NotEndsWith($needle)],
 ```
 
+## Password strength
+
+Validates if the value contains at least a letter, a capital and a number.
+
 ### Phone
 
 Validates if the value is a valid phone number.
+
+### Positive interval
+
+Validates if the value is an interval and the interval is positive.
 
 ### Price
 
@@ -132,13 +140,13 @@ provided it accepts both `,` or `.` signs.
 'field' => [new Price(',')], // accepts only ,
 ```
 
-### StartsWith
+### Secure url
 
-Validates if the value starts with a certain phrase.
+Validates if the value is a valid secure url, i.e. is a HTTPS url.
 
-```php
-'field' => [new StartsWith($needle)],
-```
+### Semver
+
+Validates if the value is a valid version according to the [Semver](https://semver.org/) standard.
 
 ### VatNumber
 
@@ -154,8 +162,8 @@ request per feature. In exchange you will be credited as contributor on this pag
 
 ## Security
 
-If you discover any security related issues in this or other packages of Vdhicts, please email info@vdhicts.nl instead
-of using the issue tracker.
+If you discover any security related issues in this or other packages of Vdhicts, please email security@vdhicts.nl 
+instead of using the issue tracker.
 
 ## License
 
@@ -163,5 +171,5 @@ This package is open-sourced software licensed under the [MIT license](http://op
 
 ## About vdhicts
 
-Van der Heiden ICT services is the name of my personal company for which I work as freelancer. Van der Heiden ICT 
-services develops and implements IT solutions for businesses and educational institutions.
+[Vdhicts](https://www.vdhicts.nl) is the name of my personal company. Vdhicts develops and implements IT solutions for
+businesses and educational institutions.

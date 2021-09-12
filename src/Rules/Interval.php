@@ -2,9 +2,11 @@
 
 namespace Vdhicts\ValidationRules\Rules;
 
+use DateInterval;
+use Exception;
 use Illuminate\Contracts\Validation\Rule;
 
-class Hostname implements Rule
+class Interval implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -15,7 +17,17 @@ class Hostname implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        return preg_match('/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/', $value) != false;
+        // Empty string means 0 interval
+        if ($value === '') {
+            $value = 'P0Y';
+        }
+        try {
+            new DateInterval($value);
+
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     /**
@@ -25,6 +37,6 @@ class Hostname implements Rule
      */
     public function message(): string
     {
-        return __('validationRules.hostname');
+        return trans('validationRules.interval');
     }
 }

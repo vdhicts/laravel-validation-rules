@@ -4,7 +4,7 @@ namespace Vdhicts\ValidationRules\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class Hostname implements Rule
+class MimeType implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -15,7 +15,11 @@ class Hostname implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        return preg_match('/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/', $value) != false;
+        if (!is_string($value)) {
+            return false;
+        }
+
+        return preg_match('/^\w+\/[-+.\w]+$/', $value) === 1;
     }
 
     /**
@@ -25,6 +29,6 @@ class Hostname implements Rule
      */
     public function message(): string
     {
-        return __('validationRules.hostname');
+        return trans('validationRules.mime_type');
     }
 }

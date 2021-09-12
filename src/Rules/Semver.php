@@ -3,34 +3,25 @@
 namespace Vdhicts\ValidationRules\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Support\Str;
 
-/**
- * @deprecated use the builtin `starts_with`
- */
-class StartsWith implements Rule
+class Semver implements Rule
 {
-    private string $needle;
-
-    public function __construct(string $needle = '')
-    {
-        $this->needle = $needle;
-    }
-
     /**
      * Determine if the validation rule passes.
      *
      * @param string $attribute
      * @param mixed $value
      * @return bool
+     * @see https://regex101.com/r/vkijKf/1/
+     * @see https://semver.org/
      */
     public function passes($attribute, $value): bool
     {
-        if (trim($this->needle) === '') {
+        if (!is_string($value)) {
             return false;
         }
 
-        return Str::startsWith($value, $this->needle);
+        return preg_match('/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/', $value) === 1;
     }
 
     /**
@@ -40,9 +31,6 @@ class StartsWith implements Rule
      */
     public function message(): string
     {
-        return sprintf(
-            __('validationRules.starts_with'),
-            $this->needle
-        );
+        return trans('validationRules.semver');
     }
 }
