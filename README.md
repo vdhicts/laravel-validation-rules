@@ -118,9 +118,17 @@ Validates if the value *NOT* starts with a certain phrase.
 'field' => [new NotEndsWith($needle)],
 ```
 
+## Password strength
+
+Validates if the value contains at least a letter, a capital and a number.
+
 ### Phone
 
 Validates if the value is a valid phone number.
+
+### Positive interval
+
+Validates if the value is an interval and the interval is positive.
 
 ### Price
 

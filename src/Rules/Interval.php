@@ -6,7 +6,7 @@ use DateInterval;
 use Exception;
 use Illuminate\Contracts\Validation\Rule;
 
-final class Interval implements Rule
+class Interval implements Rule
 {
     /**
      * Determine if the validation rule passes.

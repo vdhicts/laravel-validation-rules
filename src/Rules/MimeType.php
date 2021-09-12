@@ -4,7 +4,7 @@ namespace Vdhicts\ValidationRules\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-final class MimeType implements Rule
+class MimeType implements Rule
 {
     /**
      * Determine if the validation rule passes.
