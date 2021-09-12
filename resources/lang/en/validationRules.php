@@ -11,6 +11,7 @@ return [
     'hostname'                => 'The :attribute must be a valid hostname',
     'iban'                    => 'The :attribute must be a valid IBAN',
     'maximum_hour_difference' => 'The start and end date differ more then %s hours',
+    'mime_type'               => 'The :attribute must be a valid MIME',
     'not_contains'            => 'The :attribute must not contain `%s`',
     'not_ends_with'           => 'The :attribute must not end with `%s`',
     'not_starts_with'         => 'The :attribute must not start with `%s`',

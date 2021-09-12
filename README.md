@@ -86,6 +86,10 @@ Validates if the value is differing less then the provided amount of hours.
 'field' => [new MaximumHourDifference($start, 10)];
 ```
 
+### Mime Type
+
+Validates if the value is valid MIME.
+
 ### NotContains
 
 Validates if the value *NOT* contains a certain phrase.

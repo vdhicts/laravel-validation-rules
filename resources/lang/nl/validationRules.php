@@ -11,6 +11,7 @@ return [
     'hostname'                => 'Het veld :attribute moet een geldige hostname bevatten',
     'iban'                    => 'Het veld :attribute moet een geldige IBAN bevatten',
     'maximum_hour_difference' => 'De start en eind datum moeten meer dan %s uur verschil',
+    'mime_type'               => 'Het beld :attribute moet een geldig MIME-type zijn',
     'not_contains'            => 'Het veld :attribute mag geen `%s` bevatten',
     'not_ends_with'           => 'Het veld :attribute mag niet eindigen met `%s`',
     'not_starts_with'         => 'Het veld :attribute mag niet beginnen `%s`',
