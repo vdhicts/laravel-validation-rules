@@ -4,7 +4,7 @@ This package offers extra validation rules for Laravel.
 
 ## Requirements
 
-This package requires Laravel 5.7+ and PHP 7.4+.
+This package requires Laravel 8+ and PHP 7.4+.
 
 | Version | Compatible with |
 | --- | --- |
@@ -55,6 +55,20 @@ Validates if the value is a date before or equals the provided date (Carbon).
 
 ```php
 'field' => [new DateBeforeOrEqual($date)],
+```
+
+### DateHasSpecificMinutes
+
+Validates if the selected minutes for the provided date are according to the available minutes.
+
+```php
+'field' => [new DateHasSpecificMinutes([0, 15, 30, 45])],
+```
+
+When the date is not according to the 'Y-m-d H:i' format then you are able to specify the format as second parameter:
+
+```php
+'field' => [new DateHasSpecificMinutes([0, 15, 30, 45], 'd-m-Y H:i')],
 ```
 
 ### DutchPhone
