@@ -7,11 +7,12 @@ This package offers extra validation rules for Laravel.
 This package requires Laravel 8+ and PHP 7.4+.
 
 | Version | Compatible with |
-| --- | --- |
-| 1.4.0 | 8+ |
-| 1.2.0 | 7+ |
-| 1.1.0 | 6+ |
-| 1.0.1 | 5.7+ |
+|---------|-----------------|
+| 3.0.0   | 9+              |
+| 1.4.0+  | 8+              |
+| 1.2.0+  | 7+              |
+| 1.1.0   | 6+              |
+| 1.0.1   | 5.7+            |
 
 ## Installation
 
@@ -132,7 +133,7 @@ Validates if the value *NOT* starts with a certain phrase.
 'field' => [new NotEndsWith($needle)],
 ```
 
-## Password strength
+### Password strength
 
 Validates if the value contains at least a letter, a capital and a number.
 
