@@ -44,7 +44,7 @@ class DateBeforeOrEqual implements Rule
     {
         return sprintf(
             __('validationRules.date_before_or_equal'),
-            $this->date->toIso8601String()
+            $this->date->format(DateTimeInterface::ISO8601)
         );
     }
 }
