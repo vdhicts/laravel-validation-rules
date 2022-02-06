@@ -1,28 +1,33 @@
 name: CI
 
-on: [push]
+on: [ push ]
 
 jobs:
-    tests:
-        runs-on: ubuntu-latest
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-versions: [ '7.4', '8.0', '8.1' ]
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v1
+    name: PHP ${{ matrix.php-versions }}
 
-            - name: Setup PHP
-              uses: shivammathur/setup-php@v1
-              with:
-                  php-version: '8.0'
-                  extensions: mbstring, intl
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-            - name: Install Dependencies
-              run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: mbstring, intl
 
-            - name: Execute tests (Unit and Feature tests) via PHPUnit
-              run: |
-                  vendor/bin/phpunit
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress
 
-            - name: Execute static analysis
-              run: |
-                vendor/bin/phpstan
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        run: |
+          vendor/bin/phpunit
+
+      - name: Execute static analysis
+        run: |
+          vendor/bin/phpstan
