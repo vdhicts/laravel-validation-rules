@@ -130,7 +130,7 @@ Validates if the value *NOT* ends with a certain phrase.
 Validates if the value *NOT* starts with a certain phrase.
 
 ```php
-'field' => [new NotEndsWith($needle)],
+'field' => [new NotStartsWith($needle)],
 ```
 
 ### Password strength
