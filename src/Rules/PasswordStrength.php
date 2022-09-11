@@ -5,6 +5,9 @@ namespace Vdhicts\ValidationRules\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Str;
 
+/**
+ * @deprecated use the builtin `Password`. A drop in replacement: `Password::min(8)->mixedCase()->numbers()`
+ */
 final class PasswordStrength implements Rule
 {
     /**
