@@ -34,6 +34,10 @@ The package includes both English and Dutch translations. The translations can b
 
 Validates the provided [BIC number](https://www.betaalvereniging.nl/en/focus/giro-based-and-online-payments/bank-identifier-code-bic-for-sepa-transactions/).
 
+```php
+'field' => [new \BicNumber()],
+```
+
 ### Contains
 
 Validates if the value contains a certain phrase.
@@ -77,25 +81,49 @@ When the date is not according to the 'Y-m-d H:i' format then you are able to sp
 Validates if the value is a valid dutch phone number. Both mobile or landlines are supported. See the `Phone` validation
 rule to validate a phone number which isn't limited to the Netherlands.
 
+```php
+'field' => [new DutchPhone()],
+```
+
 ### DutchPostalCode
 
 Validates if the value is a valid dutch zip code, like `1234AB`.
+
+```php
+'field' => [new DutchPostalCode()],
+```
 
 ### HexColor
 
 Validates if the value contains a hex color, like `#000000`.
 
+```php
+'field' => [new HexColor()],
+```
+
 ### HostName
 
 Validates if the value contains a valid hostname, like `example.com`.
+
+```php
+'field' => [new HostName()],
+```
 
 ### InternationalBankAccountNumber
 
 Validates if the value contains a valid [IBAN](https://en.wikipedia.org/wiki/International_Bank_Account_Number).
 
+```php
+'field' => [new InternationalBankAccountNumber()],
+```
+
 ### Interval
 
 Validates if the value is an interval, i.e. `PT30S`.
+
+```php
+'field' => [new Interval()],
+```
 
 ### MaximumHourDifference
 
@@ -107,7 +135,11 @@ Validates if the value is differing less then the provided amount of hours.
 
 ### Mime Type
 
-Validates if the value is valid MIME.
+Validates if the value is a structural valid MIME.
+
+```php
+'field' => [new MimeType()],
+```
 
 ### NotContains
 
@@ -117,33 +149,21 @@ Validates if the value *NOT* contains a certain phrase.
 'field' => [new NotContains($needle)],
 ```
 
-### NotEndsWith
-
-Validates if the value *NOT* ends with a certain phrase.
-
-```php
-'field' => [new NotEndsWith($needle)],
-```
-
-### NotStartsWith
-
-Validates if the value *NOT* starts with a certain phrase.
-
-```php
-'field' => [new NotStartsWith($needle)],
-```
-
-### Password strength
-
-Validates if the value contains at least a letter, a capital and a number.
-
 ### Phone
 
 Validates if the value is a valid phone number.
 
+```php
+'field' => [new Phone()],
+```
+
 ### Positive interval
 
 Validates if the value is an interval and the interval is positive.
+
+```php
+'field' => [new PositiveInterval()],
+```
 
 ### Price
 
@@ -159,21 +179,33 @@ provided it accepts both `,` or `.` signs.
 
 Validates if the value is a valid secure url, i.e. is a HTTPS url.
 
+```php
+'field' => [new SecureUrl()],
+```
+
 ### Semver
 
 Validates if the value is a valid version according to the [Semver](https://semver.org/) standard.
+
+```php
+'field' => [new Semver()],
+```
 
 ### VatNumber
 
 Validates if the value is a valid formatted VAT number. 
 
+```php
+'field' => [new VatNumber()],
+```
+
 **Be aware**: It doesn't check if the number is known in the VAT database. If you need to know the VAT number is truly 
-legit, I'm currently offering an easy to use (paid) service for that.
+legit, check with [VIES](https://ec.europa.eu/taxation_customs/vies/#/vat-validation).
 
 ## Contribution
 
-Any contribution is welcome, but it should be (unit) tested and meet the PSR-2 standard and please create one pull 
-request per feature. In exchange you will be credited as contributor on this page.
+Any contribution is welcome, but it should be (unit) tested and meet the PSR-12 standard and please create one pull 
+request per feature. In exchange, you will be credited as contributor on this page.
 
 ## Security
 

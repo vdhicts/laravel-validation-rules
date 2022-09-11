@@ -5,6 +5,9 @@ namespace Vdhicts\ValidationRules\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Str;
 
+/**
+ * @deprecated use the builtin `doesnt_end_with`
+ */
 class NotEndsWith implements Rule
 {
     private string $needle;
