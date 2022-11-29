@@ -3,6 +3,7 @@
 return [
     'bic_number' => 'The :attribute must be a valid BIC number',
     'contains' => 'The :attribute must contain `%s`',
+    'contains_any' => 'The :attribute must contain one of these values: `%s`',
     'date_after_or_equal' => 'The :attribute must be after or equal to `%s`',
     'date_before_or_equal' => 'The :attribute must be before or equal to `%s`',
     'date_has_specific_minutes' => 'The :attribute must have one of :minutes minutes',

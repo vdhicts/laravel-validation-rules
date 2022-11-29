@@ -2,7 +2,7 @@
 
 return [
     'bic_number' => 'Het veld :attribute moet een geldig BIC nummer bevatten',
-    'contains' => 'Het veld :attribute moet `%s` bevatten',
+    'contains_any' => 'Het veld :attribute moet een van deze waardes bevatten: `%s`',
     'date_after_or_equal' => 'Het veld :attribute moet na of op `%s` zijn',
     'date_before_or_equal' => 'Het veld :attribute moet voor of op `%s` zijn',
     'date_has_specific_minutes' => 'Het veld :attribute moet ingesteld zijn op een van :minutes minuten',

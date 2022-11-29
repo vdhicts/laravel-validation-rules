@@ -46,6 +46,14 @@ Validates if the value contains a certain phrase.
 'field' => [new Contains($needle)],
 ```
 
+### ContainsAny
+
+Validates if the value contains any of the provided phrases.
+
+```php
+'field' => [new ContainsAny(['foo', 'bar'])],
+```
+
 ### DateAfterOrEqual
 
 Validates if the value is a date after or equals the provided date (Carbon).

@@ -2,7 +2,7 @@
 
 namespace Vdhicts\ValidationRules\Rules;
 
-use Carbon\Exceptions\InvalidFormatException;
+use Exception;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Carbon;
 
@@ -28,7 +28,7 @@ class DateHasSpecificMinutes implements Rule
     {
         try {
             $date = Carbon::createFromFormat($this->format, $value);
-        } catch (InvalidFormatException $exception) {
+        } catch (Exception $exception) {
             return false;
         }
 
