@@ -10,6 +10,7 @@ class VatNumber implements Rule
      * Regular expression patterns per country code.
      *
      * @var array
+     *
      * @see http://ec.europa.eu/taxation_customs/vies/faq.html?locale=en#item_11
      */
     private $vatPatterns = [
@@ -40,7 +41,7 @@ class VatNumber implements Rule
         'RO' => '\d{2,10}',
         'SE' => '\d{12}',
         'SI' => '\d{8}',
-        'SK' => '\d{10}'
+        'SK' => '\d{10}',
     ];
 
     /**
@@ -48,7 +49,6 @@ class VatNumber implements Rule
      *
      * @param  string $attribute
      * @param  mixed $value
-     * @return bool
      */
     public function passes($attribute, $value): bool
     {
@@ -60,13 +60,12 @@ class VatNumber implements Rule
         }
 
         $number = str_replace(' ', '', substr($vatNumber, 2));
-        return preg_match('/^' . $this->vatPatterns[$country] . '$/', $number) != false;
+
+        return preg_match('/^'.$this->vatPatterns[$country].'$/', $number) != false;
     }
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {

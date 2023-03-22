@@ -2,8 +2,8 @@
 
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
-use Vdhicts\ValidationRules\Tests\TestCase;
 use Vdhicts\ValidationRules\Rules\Hostname;
+use Vdhicts\ValidationRules\Tests\TestCase;
 
 class HostnameTest extends TestCase
 {

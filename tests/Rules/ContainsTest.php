@@ -2,8 +2,8 @@
 
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
-use Vdhicts\ValidationRules\Tests\TestCase;
 use Vdhicts\ValidationRules\Rules\Contains;
+use Vdhicts\ValidationRules\Tests\TestCase;
 
 class ContainsTest extends TestCase
 {

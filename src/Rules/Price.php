@@ -6,14 +6,8 @@ use Illuminate\Contracts\Validation\Rule;
 
 class Price implements Rule
 {
-    /**
-     * Holds the required decimal notation. Null to not limit to a specific decimal sign.
-     */
-    private ?string $decimalSign;
-
-    public function __construct(string $decimalSign = null)
+    public function __construct(private readonly ?string $decimalSign = null)
     {
-        $this->decimalSign = $decimalSign;
     }
 
     /**
@@ -21,15 +15,14 @@ class Price implements Rule
      *
      * @param string $attribute
      * @param mixed $value
-     * @return bool
      */
     public function passes($attribute, $value): bool
     {
-        $requiresDecimals = !is_null($this->decimalSign);
+        $requiresDecimals = ! is_null($this->decimalSign);
         if (is_null($this->decimalSign)) {
             $decimalSign = '(,|\.)?';
         } else {
-            $decimalSign = '(' . ($this->decimalSign === '.' ? '\.' : $this->decimalSign) . ')';
+            $decimalSign = '('.($this->decimalSign === '.' ? '\.' : $this->decimalSign).')';
         }
 
         $pattern = sprintf(
@@ -43,8 +36,6 @@ class Price implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {

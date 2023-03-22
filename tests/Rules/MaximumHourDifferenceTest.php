@@ -3,8 +3,8 @@
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
 use Carbon\Carbon;
-use Vdhicts\ValidationRules\Tests\TestCase;
 use Vdhicts\ValidationRules\Rules\MaximumHourDifference;
+use Vdhicts\ValidationRules\Tests\TestCase;
 
 class MaximumHourDifferenceTest extends TestCase
 {

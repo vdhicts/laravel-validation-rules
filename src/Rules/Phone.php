@@ -11,7 +11,6 @@ class Phone implements Rule
      *
      * @param string $attribute
      * @param mixed $value
-     * @return bool
      */
     public function passes($attribute, $value): bool
     {
@@ -21,13 +20,12 @@ class Phone implements Rule
             '\d{1,3}',
             '((\d{3,5})[. -]?(\d{4})|(\d{2}[. -]?){4})'
         );
+
         return preg_match($validationRegex, $value) != false;
     }
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {

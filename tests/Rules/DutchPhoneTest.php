@@ -2,8 +2,8 @@
 
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
-use Vdhicts\ValidationRules\Tests\TestCase;
 use Vdhicts\ValidationRules\Rules\DutchPhone;
+use Vdhicts\ValidationRules\Tests\TestCase;
 
 class DutchPhoneTest extends TestCase
 {

@@ -7,11 +7,8 @@ use Illuminate\Support\Str;
 
 class Contains implements Rule
 {
-    private string $needle;
-
-    public function __construct(string $needle = '')
+    public function __construct(private readonly string $needle = '')
     {
-        $this->needle = $needle;
     }
 
     /**
@@ -19,7 +16,6 @@ class Contains implements Rule
      *
      * @param string $attribute
      * @param mixed $value
-     * @return bool
      */
     public function passes($attribute, $value): bool
     {
@@ -32,8 +28,6 @@ class Contains implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {
