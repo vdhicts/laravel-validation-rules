@@ -9,13 +9,8 @@ use Illuminate\Contracts\Validation\Rule;
 
 class MaximumHourDifference implements Rule
 {
-    private DateTimeInterface $date;
-    private int $hours;
-
-    public function __construct(DateTimeInterface $date, int $hours = 24)
+    public function __construct(private readonly DateTimeInterface $date, private readonly int $hours = 24)
     {
-        $this->date = $date;
-        $this->hours = $hours;
     }
 
     /**
@@ -23,7 +18,6 @@ class MaximumHourDifference implements Rule
      *
      * @param string $attribute
      * @param mixed $value
-     * @return bool
      */
     public function passes($attribute, $value): bool
     {
@@ -40,8 +34,6 @@ class MaximumHourDifference implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {

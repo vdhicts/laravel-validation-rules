@@ -10,9 +10,6 @@ class PositiveInterval implements Rule
 {
     /**
      * Checks if the date interval is positive.
-     *
-     * @param DateInterval $interval
-     * @return bool
      */
     private function isPositiveInterval(DateInterval $interval): bool
     {
@@ -28,7 +25,6 @@ class PositiveInterval implements Rule
      *
      * @param string $attribute
      * @param mixed $value
-     * @return bool
      */
     public function passes($attribute, $value): bool
     {
@@ -47,8 +43,6 @@ class PositiveInterval implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {

@@ -11,13 +11,13 @@ class Semver implements Rule
      *
      * @param string $attribute
      * @param mixed $value
-     * @return bool
+     *
      * @see https://regex101.com/r/vkijKf/1/
      * @see https://semver.org/
      */
     public function passes($attribute, $value): bool
     {
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             return false;
         }
 
@@ -26,8 +26,6 @@ class Semver implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {

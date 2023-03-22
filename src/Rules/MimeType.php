@@ -11,11 +11,10 @@ class MimeType implements Rule
      *
      * @param string $attribute
      * @param mixed $value
-     * @return bool
      */
     public function passes($attribute, $value): bool
     {
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             return false;
         }
 
@@ -24,8 +23,6 @@ class MimeType implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {

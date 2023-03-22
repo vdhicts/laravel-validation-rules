@@ -3,8 +3,8 @@
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
 use DateInterval;
-use Vdhicts\ValidationRules\Tests\TestCase;
 use Vdhicts\ValidationRules\Rules\PositiveInterval;
+use Vdhicts\ValidationRules\Tests\TestCase;
 
 class PositiveIntervalTest extends TestCase
 {

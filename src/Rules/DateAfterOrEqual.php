@@ -7,11 +7,8 @@ use Illuminate\Contracts\Validation\Rule;
 
 class DateAfterOrEqual implements Rule
 {
-    private DateTimeInterface $date;
-
-    public function __construct(DateTimeInterface $date)
+    public function __construct(private readonly DateTimeInterface $date)
     {
-        $this->date = $date;
     }
 
     /**
@@ -19,7 +16,6 @@ class DateAfterOrEqual implements Rule
      *
      * @param string $attribute
      * @param mixed $value
-     * @return bool
      */
     public function passes($attribute, $value): bool
     {
@@ -32,8 +28,6 @@ class DateAfterOrEqual implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {

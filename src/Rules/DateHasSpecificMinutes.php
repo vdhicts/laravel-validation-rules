@@ -8,13 +8,8 @@ use Illuminate\Support\Carbon;
 
 class DateHasSpecificMinutes implements Rule
 {
-    private array $allowedMinutes;
-    private string $format;
-
-    public function __construct(array $allowedMinutes, string $format = 'Y-m-d H:i')
+    public function __construct(private readonly array $allowedMinutes, private readonly string $format = 'Y-m-d H:i')
     {
-        $this->allowedMinutes = $allowedMinutes;
-        $this->format = $format;
     }
 
     /**
@@ -22,7 +17,6 @@ class DateHasSpecificMinutes implements Rule
      *
      * @param string $attribute
      * @param mixed $value
-     * @return bool
      */
     public function passes($attribute, $value): bool
     {
@@ -37,13 +31,11 @@ class DateHasSpecificMinutes implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {
         return trans('validationRules.date_has_specific_minutes', [
-            'minutes' => implode(', ', $this->allowedMinutes)
+            'minutes' => implode(', ', $this->allowedMinutes),
         ]);
     }
 }
