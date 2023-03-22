@@ -4,10 +4,11 @@ This package offers extra validation rules for Laravel.
 
 ## Requirements
 
-This package requires Laravel 8+ and PHP 7.4+.
+This package requires Laravel 10+ and PHP 8.1+. If you need to support older version, see the table below:
 
 | Version | Compatible with |
 |---------|-----------------|
+| 4.0.0   | 10+             |
 | 3.0.0   | 9+              |
 | 1.4.0+  | 8+              |
 | 1.2.0+  | 7+              |
