@@ -1,0 +1,7 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "array_indentation": false,
+        "Laravel/laravel_phpdoc_alignment": false
+    }
+}
