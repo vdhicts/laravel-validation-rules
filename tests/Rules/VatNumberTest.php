@@ -7,7 +7,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class VatNumberTest extends TestCase
 {
-    public function testRulePasses()
+    public function testRulePasses(): void
     {
         $rule = new VatNumber();
         $validValues = [
@@ -19,13 +19,13 @@ class VatNumberTest extends TestCase
             'SE999999999999', 'SI99999999', 'SK9999999999',
         ];
         foreach ($validValues as $validValue) {
-            $this->assertTrue($rule->passes('', $validValue), $validValue);
+            $this->assertTrue($rule->passes($validValue), $validValue);
         }
     }
 
-    public function testRuleFails()
+    public function testRuleFails(): void
     {
         $rule = new VatNumber();
-        $this->assertFalse($rule->passes('', 'this 06 is a fail 12345678'));
+        $this->assertFalse($rule->passes('this 06 is a fail 12345678'));
     }
 }

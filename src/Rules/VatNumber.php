@@ -2,18 +2,17 @@
 
 namespace Vdhicts\ValidationRules\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Spatie\Regex\Regex;
 
-class VatNumber implements Rule
+class VatNumber extends AbstractRule
 {
     /**
      * Regular expression patterns per country code.
      *
-     * @var array
      *
      * @see http://ec.europa.eu/taxation_customs/vies/faq.html?locale=en#item_11
      */
-    private $vatPatterns = [
+    private array $vatPatterns = [
         'AT' => 'U[A-Z\d]{8}',
         'BE' => '(0\d{9}|\d{10})',
         'BG' => '\d{9,10}',
@@ -44,13 +43,7 @@ class VatNumber implements Rule
         'SK' => '\d{10}',
     ];
 
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param  string $attribute
-     * @param  mixed $value
-     */
-    public function passes($attribute, $value): bool
+    public function passes(mixed $value): bool
     {
         $vatNumber = strtoupper($value);
 
@@ -61,12 +54,9 @@ class VatNumber implements Rule
 
         $number = str_replace(' ', '', substr($vatNumber, 2));
 
-        return preg_match('/^'.$this->vatPatterns[$country].'$/', $number) != false;
+        return Regex::match('/^'.$this->vatPatterns[$country].'$/', $number)->hasMatch();
     }
 
-    /**
-     * Get the validation error message.
-     */
     public function message(): string
     {
         return __('validationRules.vat_number');

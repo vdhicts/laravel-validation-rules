@@ -4,9 +4,8 @@ namespace Vdhicts\ValidationRules\Rules;
 
 use DateInterval;
 use Exception;
-use Illuminate\Contracts\Validation\Rule;
 
-class PositiveInterval implements Rule
+class PositiveInterval extends AbstractRule
 {
     /**
      * Checks if the date interval is positive.
@@ -20,13 +19,7 @@ class PositiveInterval implements Rule
             $interval->format('P%yY%mM%dDT%hH%iM%sS') !== 'P0Y0M0DT0H0M0S';
     }
 
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param string $attribute
-     * @param mixed $value
-     */
-    public function passes($attribute, $value): bool
+    public function passes(mixed $value): bool
     {
         if ($value instanceof DateInterval) {
             return $this->isPositiveInterval($value);
@@ -36,14 +29,11 @@ class PositiveInterval implements Rule
             $dateInterval = new DateInterval($value);
 
             return $this->isPositiveInterval($dateInterval);
-        } catch (Exception $e) {
+        } catch (Exception) {
             return false;
         }
     }
 
-    /**
-     * Get the validation error message.
-     */
     public function message(): string
     {
         return trans('validationRules.positive_interval');

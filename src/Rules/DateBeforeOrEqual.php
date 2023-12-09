@@ -3,21 +3,15 @@
 namespace Vdhicts\ValidationRules\Rules;
 
 use DateTimeInterface;
-use Illuminate\Contracts\Validation\Rule;
 
-class DateBeforeOrEqual implements Rule
+class DateBeforeOrEqual extends AbstractRule
 {
-    public function __construct(private readonly DateTimeInterface $date)
-    {
+    public function __construct(
+        private readonly DateTimeInterface $date
+    ) {
     }
 
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param string $attribute
-     * @param mixed $value
-     */
-    public function passes($attribute, $value): bool
+    public function passes(mixed $value): bool
     {
         $limitTimestamp = $this
             ->date
@@ -31,14 +25,11 @@ class DateBeforeOrEqual implements Rule
         return strtotime($value) <= $limitTimestamp;
     }
 
-    /**
-     * Get the validation error message.
-     */
     public function message(): string
     {
         return sprintf(
             __('validationRules.date_before_or_equal'),
-            $this->date->format(DateTimeInterface::ISO8601)
+            $this->date->format('c')
         );
     }
 }

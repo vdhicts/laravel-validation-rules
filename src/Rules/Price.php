@@ -2,21 +2,16 @@
 
 namespace Vdhicts\ValidationRules\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Spatie\Regex\Regex;
 
-class Price implements Rule
+class Price extends AbstractRule
 {
-    public function __construct(private readonly ?string $decimalSign = null)
-    {
+    public function __construct(
+        private readonly ?string $decimalSign = null
+    ) {
     }
 
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param string $attribute
-     * @param mixed $value
-     */
-    public function passes($attribute, $value): bool
+    public function passes(mixed $value): bool
     {
         $requiresDecimals = ! is_null($this->decimalSign);
         if (is_null($this->decimalSign)) {
@@ -31,12 +26,9 @@ class Price implements Rule
             $requiresDecimals ? 1 : 0
         );
 
-        return preg_match($pattern, $value) != false;
+        return Regex::match($pattern, $value)->hasMatch();
     }
 
-    /**
-     * Get the validation error message.
-     */
     public function message(): string
     {
         if (is_null($this->decimalSign)) {

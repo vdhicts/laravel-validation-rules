@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 class ValidationRulesServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang/', 'validationRules');
 

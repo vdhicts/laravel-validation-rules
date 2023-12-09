@@ -7,16 +7,16 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class DutchPostalCodeTest extends TestCase
 {
-    public function testRulePasses()
+    public function testRulePasses(): void
     {
         $rule = new DutchPostalCode();
-        $this->assertTrue($rule->passes('', '1234 AA'));
-        $this->assertTrue($rule->passes('', '1234AA'));
+        $this->assertTrue($rule->passes('1234 AA'));
+        $this->assertTrue($rule->passes('1234AA'));
     }
 
-    public function testRuleFails()
+    public function testRuleFails(): void
     {
         $rule = new DutchPostalCode();
-        $this->assertFalse($rule->passes('', 'this 1234 fail AA'));
+        $this->assertFalse($rule->passes('this 1234 fail AA'));
     }
 }

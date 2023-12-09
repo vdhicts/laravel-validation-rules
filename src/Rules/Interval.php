@@ -4,17 +4,10 @@ namespace Vdhicts\ValidationRules\Rules;
 
 use DateInterval;
 use Exception;
-use Illuminate\Contracts\Validation\Rule;
 
-class Interval implements Rule
+class Interval extends AbstractRule
 {
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param string $attribute
-     * @param mixed $value
-     */
-    public function passes($attribute, $value): bool
+    public function passes(mixed $value): bool
     {
         // Empty string means 0 interval
         if ($value === '') {
@@ -24,14 +17,11 @@ class Interval implements Rule
             new DateInterval($value);
 
             return true;
-        } catch (Exception $e) {
+        } catch (Exception) {
             return false;
         }
     }
 
-    /**
-     * Get the validation error message.
-     */
     public function message(): string
     {
         return trans('validationRules.interval');

@@ -7,7 +7,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class BicNumberTest extends TestCase
 {
-    public function testRulePasses()
+    public function testRulePasses(): void
     {
         $rule = new BicNumber();
         $validValues = [
@@ -20,14 +20,14 @@ class BicNumberTest extends TestCase
             'CEDELULLXXX',
         ];
         foreach ($validValues as $validValue) {
-            $this->assertTrue($rule->passes('', $validValue), $validValue);
+            $this->assertTrue($rule->passes($validValue), $validValue);
         }
     }
 
-    public function testRuleFails()
+    public function testRuleFails(): void
     {
         $rule = new BicNumber();
-        $this->assertFalse($rule->passes('', 'CE1EL2LLFFF'));
-        $this->assertFalse($rule->passes('', 'E31DCLLFFF'));
+        $this->assertFalse($rule->passes('CE1EL2LLFFF'));
+        $this->assertFalse($rule->passes('E31DCLLFFF'));
     }
 }
