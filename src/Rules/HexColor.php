@@ -2,24 +2,18 @@
 
 namespace Vdhicts\ValidationRules\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Spatie\Regex\Regex;
 
-class HexColor implements Rule
+/**
+ * @deprecated use the builtin `hex_color`, see: https://laravel.com/docs/10.x/validation#rule-hex-color
+ */
+class HexColor extends AbstractRule
 {
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param string $attribute
-     * @param mixed $value
-     */
-    public function passes($attribute, $value): bool
+    public function passes(mixed $value): bool
     {
-        return preg_match('/^#?[a-fA-F0-9]{3,6}$/', $value) != false;
+        return Regex::match('/^#?[a-fA-F0-9]{3,6}$/', $value)->hasMatch();
     }
 
-    /**
-     * Get the validation error message.
-     */
     public function message(): string
     {
         return __('validationRules.hex_color');

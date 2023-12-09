@@ -2,17 +2,11 @@
 
 namespace Vdhicts\ValidationRules\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Spatie\Regex\Regex;
 
-class Phone implements Rule
+class Phone extends AbstractRule
 {
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param string $attribute
-     * @param mixed $value
-     */
-    public function passes($attribute, $value): bool
+    public function passes(mixed $value): bool
     {
         $validationRegex = sprintf(
             '/^\+?(%1$s)? ?(?(?=\()(\(%2$s\) ?%3$s)|([. -]?(%2$s[. -]*)?%3$s))$/',
@@ -21,12 +15,9 @@ class Phone implements Rule
             '((\d{3,5})[. -]?(\d{4})|(\d{2}[. -]?){4})'
         );
 
-        return preg_match($validationRegex, $value) != false;
+        return Regex::match($validationRegex, $value)->hasMatch();
     }
 
-    /**
-     * Get the validation error message.
-     */
     public function message(): string
     {
         return __('validationRules.phone');

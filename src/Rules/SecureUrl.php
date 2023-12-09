@@ -2,28 +2,19 @@
 
 namespace Vdhicts\ValidationRules\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Spatie\Regex\Regex;
 
-class SecureUrl implements Rule
+class SecureUrl extends AbstractRule
 {
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param string $attribute
-     * @param mixed $value
-     */
-    public function passes($attribute, $value): bool
+    public function passes(mixed $value): bool
     {
         if (! is_string($value)) {
             return false;
         }
 
-        return preg_match('/^https:\/\/[a-z0-9-]{1,63}(\.[a-z0-9-]{1,63})+(\/\S*)?$/', $value) === 1;
+        return Regex::match('/^https:\/\/[a-z0-9-]{1,63}(\.[a-z0-9-]{1,63})+(\/\S*)?$/', $value)->hasMatch();
     }
 
-    /**
-     * Get the validation error message.
-     */
     public function message(): string
     {
         return trans('validationRules.secure_url');

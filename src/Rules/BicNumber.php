@@ -2,24 +2,15 @@
 
 namespace Vdhicts\ValidationRules\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Spatie\Regex\Regex;
 
-class BicNumber implements Rule
+class BicNumber extends AbstractRule
 {
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param string $attribute
-     * @param mixed $value
-     */
-    public function passes($attribute, $value): bool
+    public function passes(mixed $value): bool
     {
-        return preg_match('/^([a-zA-Z]){4}([a-zA-Z]){2}([0-9a-zA-Z]){2}([0-9a-zA-Z]{3})?$/', $value) != false;
+        return Regex::match('/^([a-zA-Z]){4}([a-zA-Z]){2}([0-9a-zA-Z]){2}([0-9a-zA-Z]{3})?$/', $value)->hasMatch();
     }
 
-    /**
-     * Get the validation error message.
-     */
     public function message(): string
     {
         return __('validationRules.bic_number');

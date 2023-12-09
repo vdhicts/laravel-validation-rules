@@ -3,35 +3,30 @@
 namespace Vdhicts\ValidationRules\Rules;
 
 use Exception;
-use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Carbon;
 
-class DateHasSpecificMinutes implements Rule
+class DateHasSpecificMinutes extends AbstractRule
 {
-    public function __construct(private readonly array $allowedMinutes, private readonly string $format = 'Y-m-d H:i')
-    {
+    /**
+     * @param int[] $allowedMinutes
+     */
+    public function __construct(
+        private readonly array $allowedMinutes,
+        private readonly string $format = 'Y-m-d H:i'
+    ) {
     }
 
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param string $attribute
-     * @param mixed $value
-     */
-    public function passes($attribute, $value): bool
+    public function passes(mixed $value): bool
     {
         try {
             $date = Carbon::createFromFormat($this->format, $value);
-        } catch (Exception $exception) {
+        } catch (Exception) {
             return false;
         }
 
-        return in_array($date->minute, $this->allowedMinutes);
+        return in_array($date->minute, $this->allowedMinutes, true);
     }
 
-    /**
-     * Get the validation error message.
-     */
     public function message(): string
     {
         return trans('validationRules.date_has_specific_minutes', [

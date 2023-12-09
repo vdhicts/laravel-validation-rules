@@ -2,22 +2,16 @@
 
 namespace Vdhicts\ValidationRules\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Str;
 
-class Contains implements Rule
+class Contains extends AbstractRule
 {
-    public function __construct(private readonly string $needle = '')
-    {
+    public function __construct(
+        private readonly string $needle = ''
+    ) {
     }
 
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param string $attribute
-     * @param mixed $value
-     */
-    public function passes($attribute, $value): bool
+    public function passes(mixed $value): bool
     {
         if (trim($this->needle) === '') {
             return false;
@@ -26,9 +20,6 @@ class Contains implements Rule
         return Str::contains($value, $this->needle);
     }
 
-    /**
-     * Get the validation error message.
-     */
     public function message(): string
     {
         return sprintf(

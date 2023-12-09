@@ -7,18 +7,18 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class ContainsTest extends TestCase
 {
-    public function testRulePasses()
+    public function testRulePasses(): void
     {
         $rule = new Contains('test');
-        $this->assertTrue($rule->passes('', 'this is a test'));
+        $this->assertTrue($rule->passes('this is a test'));
     }
 
-    public function testRuleFails()
+    public function testRuleFails(): void
     {
         $rule = new Contains('test');
-        $this->assertFalse($rule->passes('', 'this is a fail'));
+        $this->assertFalse($rule->passes('this is a fail'));
 
         $rule = new Contains('');
-        $this->assertFalse($rule->passes('', 'this is a test'));
+        $this->assertFalse($rule->passes('this is a test'));
     }
 }
