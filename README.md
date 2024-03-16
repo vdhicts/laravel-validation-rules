@@ -4,10 +4,11 @@ This package offers extra validation rules for Laravel.
 
 ## Requirements
 
-This package requires Laravel 10+ and PHP 8.1+. If you need to support older version, see the table below:
+This package requires Laravel 11+ and PHP 8.2+. If you need to support older version, see the table below:
 
 | Version | Compatible with |
 |---------|-----------------|
+| 5.0.0   | 11+             |
 | 4.0.0   | 10+             |
 | 3.0.0   | 9+              |
 | 1.4.0+  | 8+              |
@@ -100,14 +101,6 @@ Validates if the value is a valid dutch zip code, like `1234AB`.
 
 ```php
 'field' => [new DutchPostalCode()],
-```
-
-### HexColor
-
-Validates if the value contains a hex color, like `#000000`.
-
-```php
-'field' => [new HexColor()],
 ```
 
 ### HostName
