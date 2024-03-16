@@ -8,8 +8,8 @@ This package requires Laravel 11+ and PHP 8.2+. If you need to support older ver
 
 | Version | Compatible with |
 |---------|-----------------|
-| 5.0.0   | 11+             |
-| 4.0.0   | 10+             |
+| 6.0.0   | 11+             |
+| 4.0.0+  | 10+             |
 | 3.0.0   | 9+              |
 | 1.4.0+  | 8+              |
 | 1.2.0+  | 7+              |
