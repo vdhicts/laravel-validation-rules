@@ -22,7 +22,7 @@ class MaximumHourDifference extends AbstractRule
             return false;
         }
 
-        $diffInMinutes = $end->diffInRealMinutes($this->date);
+        $diffInMinutes = $end->diffInMinutes($this->date);
 
         return ($diffInMinutes / 60) <= $this->hours;
     }
