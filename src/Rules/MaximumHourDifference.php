@@ -11,8 +11,7 @@ class MaximumHourDifference extends AbstractRule
     public function __construct(
         private readonly DateTimeInterface $date,
         private readonly int $hours = 24
-    ) {
-    }
+    ) {}
 
     public function passes(mixed $value): bool
     {

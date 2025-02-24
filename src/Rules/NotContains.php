@@ -8,8 +8,7 @@ class NotContains extends AbstractRule
 {
     public function __construct(
         private readonly string $needle = ''
-    ) {
-    }
+    ) {}
 
     public function passes(mixed $value): bool
     {

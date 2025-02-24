@@ -8,8 +8,7 @@ class ContainsAny extends AbstractRule
 {
     public function __construct(
         private readonly array $needles
-    ) {
-    }
+    ) {}
 
     public function passes(mixed $value): bool
     {

@@ -7,7 +7,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class MimeTypeTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $rule = new MimeType();
         $this->assertTrue($rule->passes('image/jpeg'));
@@ -15,7 +15,7 @@ class MimeTypeTest extends TestCase
         $this->assertTrue($rule->passes('application/json'));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $rule = new MimeType();
         $this->assertFalse($rule->passes('test'));

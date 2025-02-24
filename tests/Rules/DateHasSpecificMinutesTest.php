@@ -7,7 +7,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class DateHasSpecificMinutesTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $rule = new DateHasSpecificMinutes([0, 10, 20, 30, 40, 55]);
         $this->assertTrue($rule->passes('2021-09-30 00:00'));
@@ -21,7 +21,7 @@ class DateHasSpecificMinutesTest extends TestCase
         $this->assertTrue($rule->passes('30-09-2021 09:30'));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $rule = new DateHasSpecificMinutes([0, 10, 20, 30, 40, 55]);
         $this->assertFalse($rule->passes('lol'));

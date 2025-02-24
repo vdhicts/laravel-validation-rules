@@ -8,7 +8,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class DateAfterOrEqualTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $date = Carbon::create(2018, 9);
         $rule = new DateAfterOrEqual($date);
@@ -16,7 +16,7 @@ class DateAfterOrEqualTest extends TestCase
         $this->assertTrue($rule->passes('2018-09-21'));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $date = Carbon::create(2018, 9);
         $rule = new DateAfterOrEqual($date);

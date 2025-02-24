@@ -7,7 +7,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class SemverTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $rule = new Semver();
         $this->assertTrue($rule->passes('0.0.1'));
@@ -18,7 +18,7 @@ class SemverTest extends TestCase
         $this->assertTrue($rule->passes('10.2.3-DEV-SNAPSHOT'));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $rule = new Semver();
         $this->assertFalse($rule->passes('0.0.1a'));

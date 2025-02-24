@@ -2,6 +2,7 @@
     "preset": "laravel",
     "rules": {
         "array_indentation": false,
-        "phpdoc_align": false
+        "phpdoc_align": false,
+        "new_with_parentheses": false
     }
 }

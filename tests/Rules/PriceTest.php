@@ -7,7 +7,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class PriceTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $rule = new Price();
         $this->assertTrue($rule->passes('10.50'));
@@ -17,7 +17,7 @@ class PriceTest extends TestCase
         $this->assertTrue($rule->passes('105,-'));
     }
 
-    public function testRulePassesDecimalSign(): void
+    public function test_rule_passes_decimal_sign(): void
     {
         $rule = new Price(',');
         $this->assertTrue($rule->passes('10,50'));
@@ -28,13 +28,13 @@ class PriceTest extends TestCase
         $this->assertTrue($rule->passes('105.-'));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $rule = new Price();
         $this->assertFalse($rule->passes('no price mentioned'));
     }
 
-    public function testRuleFailsDecimalsSign(): void
+    public function test_rule_fails_decimals_sign(): void
     {
         $rule = new Price(',');
         $this->assertFalse($rule->passes('10.50'));

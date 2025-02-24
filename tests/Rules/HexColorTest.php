@@ -7,7 +7,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class HexColorTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $rule = new HexColor();
         $this->assertTrue($rule->passes('#fff'));
@@ -16,7 +16,7 @@ class HexColorTest extends TestCase
         $this->assertTrue($rule->passes('#a0a0a0'));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $rule = new HexColor();
         $this->assertFalse($rule->passes('this 06 is a fail 12345678'));

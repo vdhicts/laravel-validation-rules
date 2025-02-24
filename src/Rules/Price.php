@@ -8,8 +8,7 @@ class Price extends AbstractRule
 {
     public function __construct(
         private readonly ?string $decimalSign = null
-    ) {
-    }
+    ) {}
 
     public function passes(mixed $value): bool
     {

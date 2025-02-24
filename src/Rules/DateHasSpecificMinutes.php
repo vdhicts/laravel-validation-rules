@@ -13,8 +13,7 @@ class DateHasSpecificMinutes extends AbstractRule
     public function __construct(
         private readonly array $allowedMinutes,
         private readonly string $format = 'Y-m-d H:i'
-    ) {
-    }
+    ) {}
 
     public function passes(mixed $value): bool
     {
