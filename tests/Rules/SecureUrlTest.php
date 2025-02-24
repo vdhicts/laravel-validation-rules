@@ -7,7 +7,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class SecureUrlTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $rule = new SecureUrl();
         $this->assertTrue($rule->passes('https://google.com'));
@@ -16,7 +16,7 @@ class SecureUrlTest extends TestCase
         $this->assertTrue($rule->passes('https://www.google.com/test?q=query'));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $rule = new SecureUrl();
         $this->assertFalse($rule->passes('http://google.com'));

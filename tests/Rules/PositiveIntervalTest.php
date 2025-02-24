@@ -8,7 +8,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class PositiveIntervalTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $rule = new PositiveInterval();
         $this->assertTrue($rule->passes('PT39S'));
@@ -18,7 +18,7 @@ class PositiveIntervalTest extends TestCase
         $this->assertTrue($rule->passes(new DateInterval('P1D')));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $rule = new PositiveInterval();
         $this->assertFalse($rule->passes('-P1Y'));

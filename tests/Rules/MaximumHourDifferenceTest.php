@@ -8,7 +8,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class MaximumHourDifferenceTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $start = Carbon::create(2018, 9, 18, 9);
 
@@ -18,7 +18,7 @@ class MaximumHourDifferenceTest extends TestCase
         $this->assertTrue($rule->passes(Carbon::create(2018, 9, 18, 10, 30)));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $start = Carbon::create(2018, 9, 18, 9, 30);
 

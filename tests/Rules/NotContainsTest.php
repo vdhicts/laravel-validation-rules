@@ -7,7 +7,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class NotContainsTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $rule = new NotContains('test');
         $this->assertTrue($rule->passes('this is a great success'));
@@ -18,7 +18,7 @@ class NotContainsTest extends TestCase
         $this->assertTrue($rule->passes(''));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $rule = new NotContains('test');
         $this->assertFalse($rule->passes('this is a test'));

@@ -7,7 +7,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class DutchPhoneTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $rule = new DutchPhone();
         $this->assertTrue($rule->passes('06-12345678'));
@@ -18,7 +18,7 @@ class DutchPhoneTest extends TestCase
         $this->assertTrue($rule->passes('+3170-1234567'));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $rule = new DutchPhone();
         $this->assertFalse($rule->passes('this 06 is a fail 12345678'));

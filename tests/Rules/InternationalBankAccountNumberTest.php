@@ -7,7 +7,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class InternationalBankAccountNumberTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $rule = new InternationalBankAccountNumber();
         $this->assertTrue($rule->passes('GR1601101250000000012300695'));
@@ -15,7 +15,7 @@ class InternationalBankAccountNumberTest extends TestCase
         $this->assertTrue($rule->passes('NL91ABNA0417164300'));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $rule = new InternationalBankAccountNumber();
         $this->assertFalse($rule->passes('1234 no iban here'));

@@ -7,7 +7,7 @@ use Vdhicts\ValidationRules\Tests\TestCase;
 
 class HostnameTest extends TestCase
 {
-    public function testRulePasses(): void
+    public function test_rule_passes(): void
     {
         $rule = new Hostname();
         $this->assertTrue($rule->passes('example.com'));
@@ -15,7 +15,7 @@ class HostnameTest extends TestCase
         $this->assertTrue($rule->passes('www.example.com'));
     }
 
-    public function testRuleFails(): void
+    public function test_rule_fails(): void
     {
         $rule = new Hostname();
         $this->assertFalse($rule->passes('I\'m not a valid hostname!'));
