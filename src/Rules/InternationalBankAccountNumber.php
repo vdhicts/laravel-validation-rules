@@ -13,6 +13,6 @@ class InternationalBankAccountNumber extends AbstractRule
 
     public function message(): string
     {
-        return __('validationRules.iban');
+        return __('validationRules::messages.iban');
     }
 }

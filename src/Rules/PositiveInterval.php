@@ -36,6 +36,6 @@ class PositiveInterval extends AbstractRule
 
     public function message(): string
     {
-        return trans('validationRules.positive_interval');
+        return __('validationRules::messages.positive_interval');
     }
 }

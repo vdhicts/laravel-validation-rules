@@ -59,6 +59,6 @@ class VatNumber extends AbstractRule
 
     public function message(): string
     {
-        return __('validationRules.vat_number');
+        return __('validationRules::messages.vat_number');
     }
 }

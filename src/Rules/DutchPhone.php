@@ -13,6 +13,6 @@ class DutchPhone extends AbstractRule
 
     public function message(): string
     {
-        return __('validationRules.dutch_phone');
+        return __('validationRules::messages.dutch_phone');
     }
 }

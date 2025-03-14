@@ -12,8 +12,8 @@ class Price extends AbstractRule
 
     public function passes(mixed $value): bool
     {
-        $requiresDecimals = ! is_null($this->decimalSign);
-        if (is_null($this->decimalSign)) {
+        $requiresDecimals = $this->decimalSign !== null;
+        if ($this->decimalSign === null) {
             $decimalSign = '(,|\.)?';
         } else {
             $decimalSign = '('.($this->decimalSign === '.' ? '\.' : $this->decimalSign).')';
@@ -30,13 +30,8 @@ class Price extends AbstractRule
 
     public function message(): string
     {
-        if (is_null($this->decimalSign)) {
-            return __('validationRules.price');
-        }
-
-        return sprintf(
-            __('validationRules.price_custom_decimal'),
-            $this->decimalSign
-        );
+        return $this->decimalSign === null
+            ? __('validationRules::messages.price')
+            : __('validationRules::messages.price_custom_decimal', ['separator' => $this->decimalSign]);
     }
 }

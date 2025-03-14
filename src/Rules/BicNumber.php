@@ -13,6 +13,6 @@ class BicNumber extends AbstractRule
 
     public function message(): string
     {
-        return __('validationRules.bic_number');
+        return __('validationRules::messages.bic_number');
     }
 }

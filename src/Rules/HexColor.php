@@ -16,6 +16,6 @@ class HexColor extends AbstractRule
 
     public function message(): string
     {
-        return __('validationRules.hex_color');
+        return __('validationRules::messages.hex_color');
     }
 }

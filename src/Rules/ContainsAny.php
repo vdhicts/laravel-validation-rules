@@ -17,9 +17,6 @@ class ContainsAny extends AbstractRule
 
     public function message(): string
     {
-        return sprintf(
-            __('validationRules.contains_any'),
-            implode(', ', $this->needles)
-        );
+        return __('validationRules::messages.contains_any', ['values' => implode(', ', $this->needles)]);
     }
 }
