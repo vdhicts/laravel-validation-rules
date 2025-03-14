@@ -17,6 +17,6 @@ class MimeType extends AbstractRule
 
     public function message(): string
     {
-        return trans('validationRules.mime_type');
+        return __('validationRules::messages.mime_type');
     }
 }

@@ -21,9 +21,6 @@ class NotContains extends AbstractRule
 
     public function message(): string
     {
-        return sprintf(
-            __('validationRules.not_contains'),
-            $this->needle
-        );
+        return __('validationRules::messages.not_contains', ['value' => $this->needle]);
     }
 }

@@ -20,6 +20,6 @@ class Phone extends AbstractRule
 
     public function message(): string
     {
-        return __('validationRules.phone');
+        return __('validationRules::messages.phone');
     }
 }

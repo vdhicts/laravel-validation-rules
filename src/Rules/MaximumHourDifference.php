@@ -28,9 +28,6 @@ class MaximumHourDifference extends AbstractRule
 
     public function message(): string
     {
-        return sprintf(
-            __('validationRules.maximum_hour_difference'),
-            $this->hours
-        );
+        return __('validationRules::messages.maximum_hour_difference', ['diff' => $this->hours]);
     }
 }

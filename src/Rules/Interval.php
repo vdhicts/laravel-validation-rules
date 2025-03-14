@@ -24,6 +24,6 @@ class Interval extends AbstractRule
 
     public function message(): string
     {
-        return trans('validationRules.interval');
+        return __('validationRules::messages.interval');
     }
 }

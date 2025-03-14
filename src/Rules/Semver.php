@@ -23,6 +23,6 @@ class Semver extends AbstractRule
 
     public function message(): string
     {
-        return trans('validationRules.semver');
+        return __('validationRules::messages.semver');
     }
 }

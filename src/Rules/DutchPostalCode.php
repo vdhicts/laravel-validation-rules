@@ -13,6 +13,6 @@ class DutchPostalCode extends AbstractRule
 
     public function message(): string
     {
-        return __('validationRules.dutch_postal_code');
+        return __('validationRules::messages.dutch_postal_code');
     }
 }

@@ -28,7 +28,7 @@ class DateHasSpecificMinutes extends AbstractRule
 
     public function message(): string
     {
-        return trans('validationRules.date_has_specific_minutes', [
+        return __('validationRules::messages.date_has_specific_minutes', [
             'minutes' => implode(', ', $this->allowedMinutes),
         ]);
     }

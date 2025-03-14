@@ -17,6 +17,6 @@ class SecureUrl extends AbstractRule
 
     public function message(): string
     {
-        return trans('validationRules.secure_url');
+        return __('validationRules::messages.secure_url');
     }
 }

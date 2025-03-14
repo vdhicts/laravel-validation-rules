@@ -13,6 +13,6 @@ class Hostname extends AbstractRule
 
     public function message(): string
     {
-        return __('validationRules.hostname');
+        return __('validationRules::messages.hostname');
     }
 }

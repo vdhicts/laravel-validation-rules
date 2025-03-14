@@ -21,9 +21,6 @@ class DateAfterOrEqual extends AbstractRule
 
     public function message(): string
     {
-        return sprintf(
-            __('validationRules.date_after_or_equal'),
-            $this->date->format('c')
-        );
+        return __('validationRules::messages.date_after_or_equal', ['date' => $this->date->format('c')]);
     }
 }

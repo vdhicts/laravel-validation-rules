@@ -21,9 +21,6 @@ class Contains extends AbstractRule
 
     public function message(): string
     {
-        return sprintf(
-            __('validationRules.contains'),
-            $this->needle
-        );
+        return __('validationRules::messages.contains', ['value' => $this->needle]);
     }
 }
