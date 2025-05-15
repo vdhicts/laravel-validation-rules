@@ -2,44 +2,81 @@
 
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Vdhicts\ValidationRules\Rules\Price;
 use Vdhicts\ValidationRules\Tests\TestCase;
 
 class PriceTest extends TestCase
 {
-    public function test_rule_passes(): void
+    public static function validPrices(): array
+    {
+        return [
+            ['10.50'],
+            ['10,50'],
+            ['105'],
+            [',50'],
+            ['105,-'],
+        ];
+    }
+
+    public static function validPricesWithDecimals(): array
+    {
+        return [
+            ['10,50', ','],
+            ['105,-', ','],
+            ['10.50', '.'],
+            ['105.-', '.'],
+        ];
+    }
+
+    public static function invalidPrices(): array
+    {
+        return [
+            ['no price mentioned'],
+            [''],
+            [123],
+            [false],
+            [null],
+        ];
+    }
+
+    public static function invalidPricesAccordingToDecimals(): array
+    {
+        return [
+            ['10.50', ','],
+            ['10,50', '.'],
+        ];
+    }
+
+    #[DataProvider('validPrices')]
+    public function test_rule_passes(string $price): void
     {
         $rule = new Price();
-        $this->assertTrue($rule->passes('10.50'));
-        $this->assertTrue($rule->passes('10,50'));
-        $this->assertTrue($rule->passes('105'));
-        $this->assertTrue($rule->passes(',50'));
-        $this->assertTrue($rule->passes('105,-'));
+
+        $this->assertTrue($rule->passes($price));
     }
 
-    public function test_rule_passes_decimal_sign(): void
+    #[DataProvider('validPricesWithDecimals')]
+    public function test_rule_passes_decimal_sign(string $price, string $decimalSign): void
     {
-        $rule = new Price(',');
-        $this->assertTrue($rule->passes('10,50'));
-        $this->assertTrue($rule->passes('105,-'));
+        $rule = new Price($decimalSign);
 
-        $rule = new Price('.');
-        $this->assertTrue($rule->passes('10.50'));
-        $this->assertTrue($rule->passes('105.-'));
+        $this->assertTrue($rule->passes($price));
     }
 
-    public function test_rule_fails(): void
+    #[DataProvider('invalidPrices')]
+    public function test_rule_fails(mixed $price): void
     {
         $rule = new Price();
-        $this->assertFalse($rule->passes('no price mentioned'));
+
+        $this->assertFalse($rule->passes($price));
     }
 
-    public function test_rule_fails_decimals_sign(): void
+    #[DataProvider('invalidPricesAccordingToDecimals')]
+    public function test_rule_fails_decimals_sign(string $price, string $decimalSign): void
     {
-        $rule = new Price(',');
-        $this->assertFalse($rule->passes('10.50'));
+        $rule = new Price($decimalSign);
 
-        $rule = new Price('.');
-        $this->assertFalse($rule->passes('10,50'));
+        $this->assertFalse($rule->passes($price));
     }
 }

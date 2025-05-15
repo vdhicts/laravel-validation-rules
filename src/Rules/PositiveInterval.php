@@ -25,6 +25,10 @@ class PositiveInterval extends AbstractRule
             return $this->isPositiveInterval($value);
         }
 
+        if (! is_string($value)) {
+            return false;
+        }
+
         try {
             $dateInterval = new DateInterval($value);
 

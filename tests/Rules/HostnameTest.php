@@ -2,22 +2,46 @@
 
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Vdhicts\ValidationRules\Rules\Hostname;
 use Vdhicts\ValidationRules\Tests\TestCase;
 
 class HostnameTest extends TestCase
 {
-    public function test_rule_passes(): void
+    public static function validHostnames(): array
     {
-        $rule = new Hostname();
-        $this->assertTrue($rule->passes('example.com'));
-        $this->assertTrue($rule->passes('host-name'));
-        $this->assertTrue($rule->passes('www.example.com'));
+        return [
+            ['example.com'],
+            ['host-name'],
+            ['www.example.com'],
+        ];
     }
 
-    public function test_rule_fails(): void
+    public static function invalidHostnames(): array
+    {
+        return [
+            ['I\'m not a valid hostname!'],
+            ['invalid_hostname!'],
+            [false],
+            [''],
+            [123],
+            [null],
+        ];
+    }
+
+    #[DataProvider('validHostnames')]
+    public function test_rule_passes(string $hostname): void
     {
         $rule = new Hostname();
-        $this->assertFalse($rule->passes('I\'m not a valid hostname!'));
+
+        $this->assertTrue($rule->passes($hostname));
+    }
+
+    #[DataProvider('invalidHostnames')]
+    public function test_rule_fails(mixed $hostname): void
+    {
+        $rule = new Hostname();
+
+        $this->assertFalse($rule->passes($hostname));
     }
 }

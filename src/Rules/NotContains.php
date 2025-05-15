@@ -7,11 +7,16 @@ use Illuminate\Support\Str;
 class NotContains extends AbstractRule
 {
     public function __construct(
-        private readonly string $needle = ''
-    ) {}
+        private readonly string $needle = '',
+    ) {
+    }
 
     public function passes(mixed $value): bool
     {
+        if (! is_string($value)) {
+            return false;
+        }
+
         if ($this->needle === '') {
             return true;
         }

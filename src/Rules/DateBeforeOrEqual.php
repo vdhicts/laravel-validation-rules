@@ -8,10 +8,15 @@ class DateBeforeOrEqual extends AbstractRule
 {
     public function __construct(
         private readonly DateTimeInterface $date
-    ) {}
+    ) {
+    }
 
     public function passes(mixed $value): bool
     {
+        if (! is_string($value)) {
+            return false;
+        }
+
         $limitTimestamp = $this
             ->date
             ->getTimestamp();

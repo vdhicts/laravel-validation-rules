@@ -2,23 +2,44 @@
 
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Vdhicts\ValidationRules\Rules\Contains;
 use Vdhicts\ValidationRules\Tests\TestCase;
 
 class ContainsTest extends TestCase
 {
-    public function test_rule_passes(): void
+    public static function stringContainsValue(): array
     {
-        $rule = new Contains('test');
-        $this->assertTrue($rule->passes('this is a test'));
+        return [
+            ['this is a test', 'test'],
+            ['this is a test', 'is a'],
+            ['this is a test', 'this'],
+        ];
     }
 
-    public function test_rule_fails(): void
+    public static function stringNotContainsValue(): array
     {
-        $rule = new Contains('test');
-        $this->assertFalse($rule->passes('this is a fail'));
+        return [
+            ['this is a great success', 'test'],
+            ['', 'test'],
+            ['this is a great success', ''],
+            ['', ''],
+        ];
+    }
 
-        $rule = new Contains('');
-        $this->assertFalse($rule->passes('this is a test'));
+    #[DataProvider('stringContainsValue')]
+    public function test_rule_passes(string $haystack, string $needle): void
+    {
+        $rule = new Contains($needle);
+
+        $this->assertTrue($rule->passes($haystack));
+    }
+
+    #[DataProvider('stringNotContainsValue')]
+    public function test_rule_fails(string $haystack, string $needle): void
+    {
+        $rule = new Contains($needle);
+
+        $this->assertFalse($rule->passes($haystack));
     }
 }

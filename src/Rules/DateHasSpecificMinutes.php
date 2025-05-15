@@ -13,10 +13,15 @@ class DateHasSpecificMinutes extends AbstractRule
     public function __construct(
         private readonly array $allowedMinutes,
         private readonly string $format = 'Y-m-d H:i'
-    ) {}
+    ) {
+    }
 
     public function passes(mixed $value): bool
     {
+        if (! is_string($value)) {
+            return false;
+        }
+
         try {
             $date = Carbon::createFromFormat($this->format, $value);
         } catch (Exception) {

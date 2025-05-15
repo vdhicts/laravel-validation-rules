@@ -2,32 +2,52 @@
 
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Vdhicts\ValidationRules\Rules\BicNumber;
 use Vdhicts\ValidationRules\Tests\TestCase;
 
 class BicNumberTest extends TestCase
 {
-    public function test_rule_passes(): void
+    public static function validBicNumbers(): array
     {
-        $rule = new BicNumber();
-        $validValues = [
-            'RBOSGGSX',
-            'RZTIAT22263',
-            'BCEELULL',
-            'MARKDEFF',
-            'GENODEF1JEV',
-            'UBSWCHZH80A',
-            'CEDELULLXXX',
+        return [
+            ['RBOSGGSX'],
+            ['RZTIAT22263'],
+            ['BCEELULL'],
+            ['MARKDEFF'],
+            ['GENODEF1JEV'],
+            ['UBSWCHZH80A'],
+            ['CEDELULLXXX'],
         ];
-        foreach ($validValues as $validValue) {
-            $this->assertTrue($rule->passes($validValue), $validValue);
-        }
     }
 
-    public function test_rule_fails(): void
+    public static function invalidBicNumbers(): array
+    {
+        return [
+            ['CE1EL2LLFFF'],
+            ['E31DCLLFFF'],
+            ['12345678'],
+            ['BIC12345'],
+            ['BIC!@#$%^&*()'],
+            ['BIC1234567890'],
+            [false],
+            [null],
+        ];
+    }
+
+    #[DataProvider('validBicNumbers')]
+    public function test_rule_passes(string $bicNumber): void
     {
         $rule = new BicNumber();
-        $this->assertFalse($rule->passes('CE1EL2LLFFF'));
-        $this->assertFalse($rule->passes('E31DCLLFFF'));
+
+        $this->assertTrue($rule->passes($bicNumber));
+    }
+
+    #[DataProvider('invalidBicNumbers')]
+    public function test_rule_fails(mixed $bicNumber): void
+    {
+        $rule = new BicNumber();
+
+        $this->assertFalse($rule->passes($bicNumber));
     }
 }

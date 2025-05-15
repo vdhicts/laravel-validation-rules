@@ -2,24 +2,47 @@
 
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Vdhicts\ValidationRules\Rules\SecureUrl;
 use Vdhicts\ValidationRules\Tests\TestCase;
 
 class SecureUrlTest extends TestCase
 {
-    public function test_rule_passes(): void
+    public static function secureUrls(): array
     {
-        $rule = new SecureUrl();
-        $this->assertTrue($rule->passes('https://google.com'));
-        $this->assertTrue($rule->passes('https://www.google.com'));
-        $this->assertTrue($rule->passes('https://www.google.com/test'));
-        $this->assertTrue($rule->passes('https://www.google.com/test?q=query'));
+        return [
+            ['https://google.com'],
+            ['https://www.google.com'],
+            ['https://www.google.com/test'],
+            ['https://www.google.com/test?q=query'],
+        ];
     }
 
-    public function test_rule_fails(): void
+    public static function insecureUrls(): array
+    {
+        return [
+            ['http://google.com'],
+            ['123'],
+            [''],
+            [123],
+            [false],
+            [null],
+        ];
+    }
+
+    #[DataProvider('secureUrls')]
+    public function test_rule_passes(string $secureUrl): void
     {
         $rule = new SecureUrl();
-        $this->assertFalse($rule->passes('http://google.com'));
-        $this->assertFalse($rule->passes(123));
+
+        $this->assertTrue($rule->passes($secureUrl));
+    }
+
+    #[DataProvider('insecureUrls')]
+    public function test_rule_fails(mixed $insecureUrl): void
+    {
+        $rule = new SecureUrl();
+
+        $this->assertFalse($rule->passes($insecureUrl));
     }
 }

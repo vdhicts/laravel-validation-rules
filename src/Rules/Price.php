@@ -8,10 +8,15 @@ class Price extends AbstractRule
 {
     public function __construct(
         private readonly ?string $decimalSign = null
-    ) {}
+    ) {
+    }
 
     public function passes(mixed $value): bool
     {
+        if (empty($value) || ! is_string($value)) {
+            return false;
+        }
+
         $requiresDecimals = $this->decimalSign !== null;
         if ($this->decimalSign === null) {
             $decimalSign = '(,|\.)?';

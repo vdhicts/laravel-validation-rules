@@ -2,25 +2,46 @@
 
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Vdhicts\ValidationRules\Rules\Interval;
 use Vdhicts\ValidationRules\Tests\TestCase;
 
 class IntervalTest extends TestCase
 {
-    public function test_rule_passes(): void
+    public static function validIntervals(): array
     {
-        $rule = new Interval();
-        $this->assertTrue($rule->passes('PT39S'));
-        $this->assertTrue($rule->passes('PT59S'));
-        $this->assertTrue($rule->passes('PT6S'));
-        $this->assertTrue($rule->passes('PT4M2S'));
-        $this->assertTrue($rule->passes(''));
+        return [
+            ['PT39S'],
+            ['PT59S'],
+            ['PT6S'],
+            ['PT4M2S'],
+            [''],
+        ];
     }
 
-    public function test_rule_fails(): void
+    public static function invalidIntervals(): array
+    {
+        return [
+            ['test'],
+            [123],
+            [false],
+            [null],
+        ];
+    }
+
+    #[DataProvider('validIntervals')]
+    public function test_rule_passes(string $interval): void
     {
         $rule = new Interval();
-        $this->assertFalse($rule->passes('test'));
-        $this->assertFalse($rule->passes('123'));
+
+        $this->assertTrue($rule->passes($interval));
+    }
+
+    #[DataProvider('invalidIntervals')]
+    public function test_rule_fails(mixed $interval): void
+    {
+        $rule = new Interval();
+
+        $this->assertFalse($rule->passes($interval));
     }
 }
