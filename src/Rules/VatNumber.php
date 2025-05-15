@@ -9,7 +9,6 @@ class VatNumber extends AbstractRule
     /**
      * Regular expression patterns per country code.
      *
-     *
      * @see http://ec.europa.eu/taxation_customs/vies/faq.html?locale=en#item_11
      */
     private array $vatPatterns = [
@@ -45,6 +44,10 @@ class VatNumber extends AbstractRule
 
     public function passes(mixed $value): bool
     {
+        if (! is_string($value)) {
+            return false;
+        }
+
         $vatNumber = strtoupper($value);
 
         $country = substr($vatNumber, 0, 2);

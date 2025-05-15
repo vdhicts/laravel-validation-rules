@@ -3,28 +3,46 @@
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
 use Carbon\Carbon;
+use Carbon\CarbonInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Vdhicts\ValidationRules\Rules\MaximumHourDifference;
 use Vdhicts\ValidationRules\Tests\TestCase;
 
 class MaximumHourDifferenceTest extends TestCase
 {
-    public function test_rule_passes(): void
+    public static function validDifferences(): array
     {
-        $start = Carbon::create(2018, 9, 18, 9);
-
-        $rule = new MaximumHourDifference($start, 10);
-        $this->assertTrue($rule->passes(Carbon::create(2018, 9, 17, 23)));
-        $this->assertTrue($rule->passes(Carbon::create(2018, 9, 17, 23, 59)));
-        $this->assertTrue($rule->passes(Carbon::create(2018, 9, 18, 10, 30)));
+        return [
+            [10, Carbon::create(2018, 9, 18, 9), Carbon::create(2018, 9, 17, 23)],
+            [10, Carbon::create(2018, 9, 18, 9), Carbon::create(2018, 9, 17, 23, 59)],
+            [10, Carbon::create(2018, 9, 18, 9), Carbon::create(2018, 9, 18, 10, 30)],
+        ];
     }
 
-    public function test_rule_fails(): void
+    public static function invalidDifferences(): array
     {
-        $start = Carbon::create(2018, 9, 18, 9, 30);
+        return [
+            [4, Carbon::create(2018, 9, 18, 9, 30), Carbon::create(2018, 9, 17, 23)],
+            [4, Carbon::create(2018, 9, 18, 9, 30), Carbon::create(2018, 9, 17, 13, 45)],
+            [4, Carbon::create(2018, 9, 18, 9, 30), 'test'],
+            [4, Carbon::create(2018, 9, 18, 9, 30), false],
+            [4, Carbon::create(2018, 9, 18, 9, 30), null],
+        ];
+    }
 
-        $rule = new MaximumHourDifference($start, 4);
-        $this->assertFalse($rule->passes(Carbon::create(2018, 9, 17, 23)));
-        $this->assertFalse($rule->passes(Carbon::create(2018, 9, 17, 13, 45)));
-        $this->assertFalse($rule->passes('test'));
+    #[DataProvider('validDifferences')]
+    public function test_rule_passes(int $diff, CarbonInterface $start, CarbonInterface $till): void
+    {
+        $rule = new MaximumHourDifference($start, $diff);
+
+        $this->assertTrue($rule->passes($till));
+    }
+
+    #[DataProvider('invalidDifferences')]
+    public function test_rule_fails(int $diff, CarbonInterface $start, mixed $till): void
+    {
+        $rule = new MaximumHourDifference($start, $diff);
+
+        $this->assertFalse($rule->passes($till));
     }
 }

@@ -3,25 +3,46 @@
 namespace Vdhicts\ValidationRules\Tests\Rules;
 
 use DateInterval;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Vdhicts\ValidationRules\Rules\PositiveInterval;
 use Vdhicts\ValidationRules\Tests\TestCase;
 
 class PositiveIntervalTest extends TestCase
 {
-    public function test_rule_passes(): void
+    public static function validIntervals(): array
     {
-        $rule = new PositiveInterval();
-        $this->assertTrue($rule->passes('PT39S'));
-        $this->assertTrue($rule->passes('PT59S'));
-        $this->assertTrue($rule->passes('PT6S'));
-        $this->assertTrue($rule->passes('PT4M2S'));
-        $this->assertTrue($rule->passes(new DateInterval('P1D')));
+        return [
+            ['PT39S'],
+            ['PT59S'],
+            ['PT6S'],
+            ['PT4M2S'],
+            [new DateInterval('P1D')],
+        ];
     }
 
-    public function test_rule_fails(): void
+    public static function invalidIntervals(): array
+    {
+        return [
+            ['-P1Y'],
+            ['test'],
+            [false],
+            [null],
+        ];
+    }
+
+    #[DataProvider('validIntervals')]
+    public function test_rule_passes(string|DateInterval $interval): void
     {
         $rule = new PositiveInterval();
-        $this->assertFalse($rule->passes('-P1Y'));
-        $this->assertFalse($rule->passes('test'));
+
+        $this->assertTrue($rule->passes($interval));
+    }
+
+    #[DataProvider('invalidIntervals')]
+    public function test_rule_fails(mixed $interval): void
+    {
+        $rule = new PositiveInterval();
+
+        $this->assertFalse($rule->passes($interval));
     }
 }

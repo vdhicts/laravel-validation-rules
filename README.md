@@ -38,7 +38,7 @@ The package includes both English and Dutch translations. The translations can b
 Validates the provided [BIC number](https://www.betaalvereniging.nl/en/focus/giro-based-and-online-payments/bank-identifier-code-bic-for-sepa-transactions/).
 
 ```php
-'field' => [new \BicNumber()],
+'field' => [new BicNumber()],
 ```
 
 ### Contains
@@ -89,7 +89,7 @@ When the date is not according to the 'Y-m-d H:i' format then you are able to sp
 
 ### DutchPhone
 
-Validates if the value is a valid dutch phone number. Both mobile or landlines are supported. See the `Phone` validation
+Validates if the value is a valid Dutch phone number. Both mobile or landlines are supported. See the `Phone` validation
 rule to validate a phone number which isn't limited to the Netherlands.
 
 ```php
@@ -98,7 +98,7 @@ rule to validate a phone number which isn't limited to the Netherlands.
 
 ### DutchPostalCode
 
-Validates if the value is a valid dutch zip code, like `1234AB`.
+Validates if the value is a valid Dutch zip code, like `1234AB`.
 
 ```php
 'field' => [new DutchPostalCode()],
@@ -196,7 +196,7 @@ Validates if the value is a valid version according to the [Semver](https://semv
 
 ### VatNumber
 
-Validates if the value is a valid formatted VAT number. 
+Validates if the value is a properly formatted VAT number. 
 
 ```php
 'field' => [new VatNumber()],
@@ -204,6 +204,16 @@ Validates if the value is a valid formatted VAT number.
 
 **Be aware**: It doesn't check if the number is known in the VAT database. If you need to know the VAT number is truly 
 legit, check with [VIES](https://ec.europa.eu/taxation_customs/vies/#/vat-validation).
+
+### VersionNumber
+
+Validates if the value is a valid version number. The rule accepts both `x.y.z` and `x.y` formats. The parameter 
+`requirePatch` allows you to require the `z` part of the version number. This is useful for validation PHP version 
+numbers for example.
+
+```php
+'field' => [new VersionNumber(requirePatch: true)],
+```
 
 ## Contribution
 
@@ -218,8 +228,3 @@ instead of using the issue tracker.
 ## License
 
 This package is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
-
-## About vdhicts
-
-[Vdhicts](https://www.vdhicts.nl) is the name of my personal company. Vdhicts develops and implements IT solutions for
-businesses and educational institutions.

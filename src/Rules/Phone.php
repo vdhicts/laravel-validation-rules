@@ -8,6 +8,10 @@ class Phone extends AbstractRule
 {
     public function passes(mixed $value): bool
     {
+        if (! is_string($value)) {
+            return false;
+        }
+
         $validationRegex = sprintf(
             '/^\+?(%1$s)? ?(?(?=\()(\(%2$s\) ?%3$s)|([. -]?(%2$s[. -]*)?%3$s))$/',
             '\d{0,3}',

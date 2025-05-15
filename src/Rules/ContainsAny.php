@@ -7,11 +7,16 @@ use Illuminate\Support\Str;
 class ContainsAny extends AbstractRule
 {
     public function __construct(
-        private readonly array $needles
-    ) {}
+        private readonly array $needles,
+    ) {
+    }
 
     public function passes(mixed $value): bool
     {
+        if (! is_string($value)) {
+            return false;
+        }
+
         return Str::contains($value, $this->needles);
     }
 

@@ -9,8 +9,12 @@ class Interval extends AbstractRule
 {
     public function passes(mixed $value): bool
     {
+        if (! is_string($value)) {
+            return false;
+        }
+
         // Empty string means 0 interval
-        if ($value === '') {
+        if (empty($value)) {
             $value = 'P0Y';
         }
         try {
