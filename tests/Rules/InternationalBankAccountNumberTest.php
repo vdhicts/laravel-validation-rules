@@ -25,6 +25,7 @@ class InternationalBankAccountNumberTest extends TestCase
             [123],
             [false],
             [null],
+            ['NL91ABNA0417164300@'],
         ];
     }
 
